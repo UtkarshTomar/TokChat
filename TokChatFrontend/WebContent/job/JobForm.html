@@ -1,0 +1,53 @@
+<div class="container" ng-controller="JobController">
+
+
+			<div class="row main">
+				<div class="main-login main-center">
+				<h1>Add Job</h1>
+					
+						
+						<div class="form-group">
+							<label for="name">Job Designation</label>
+							<input type="text" class="form-control" name=" jobDesignation" id=" jobDesignation"  placeholder="Enter Job Designation" ng-model="job. jobDesignation"/>
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Company Name</label>
+							<input type="text" class="form-control" name="company" id="company" placeholder="Enter Company Name" ng-model="job.company"/>
+							
+						</div>
+						
+						
+						<div class="form-group">
+							<label for="name">Salary</label>
+							<input type="text" class="form-control" name="salary" id="salary" placeholder="Salary " ng-model="job.salary"/>
+							
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Location</label>
+							<input type="text" class="form-control" name="location" id="location" placeholder="Location of Job" ng-model="job.location"/>
+							
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Last Date To Apply</label>
+							<input type="text" class="form-control" name="lastDateApply" id="lastDateApply" placeholder="Enter Date" ng-model="job.lastDateApply"/>
+							
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Job Description</label>
+							<input type="text" class="form-control" name="jobDesc" id="jobDesc" placeholder="About Job " ng-model="job.jobDesc"/>
+							
+						</div>
+
+						<div class="form-group ">
+						<input type="button" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Add Job" ng-click="addJob()"/>
+						</div>
+						
+					
+				</div>
+			</div>
+		</div>
+    

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TokChat</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  			 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+  <script src="js//MyApp.js"></script>
+    <script src="user//UserController.js"></script>
+    <script src="blog//BlogController.js"></script>
+     <script src="job//JobController.js"></script>
+     <script src="user//FriendController.js"></script>
+     <script src="user//ChatController.js"></script>
+     <script src="user//ChatService.js"></script>
+     <!-- <script src="js//sockjs//sockjs.js"></script> -->
+     <script src="js//sockjs//sockjs.min.js"></script>
+     <script src="js//stomp//dist//stomp.js"></script>
+</head>
+<body ng-app="myApp">
+
+	<!-- header -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/!">TokChat</a>
+			</div>
+		
+		 <ul class="nav navbar-nav">
+     	 <li class="active"><a href="#">Home</a></li>
+     	 
+     	 	<li><a href="#!viewApprovedBlogs" ng-show="currentUser==undefined">
+      			Blog
+      		</a>
+      		</li>
+      		
+      		<li><a href="#!viewJob" ng-show="currentUser==undefined">
+      			Job
+      		</a>
+      		</li>
+      
+     	 <li class="dropdown" ng-show="currentUser.role=='Role_User'">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#!addBlog">Add Blog</a></li>
+          <li><a href="#!viewBlog">All Blogs</a></li>
+        <li><a href="#!viewApprovedBlogs">
+      		Approved Blogs</a>
+      	</li>
+        </ul>
+        </li>
+      <li><a href="#!chat" 
+			ng-show="currentUser.firstName!=undefined">
+			Chat Room</a></li> 
+     
+      <li class="dropdown"><a class="navbar-brand" href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.firstName!=undefined" 
+      >Friend<b class="caret"></b></a> 
+			<ul class="dropdown-menu">
+			<li><a href="#!suggestedusers" >Suggested Users</a></li>
+			<li><a href="#!pendingrequests" >Pending Requests </a></li>
+			<li><a href="#!friends" >Friends </a></li></ul>
+			</li>
+		     	
+      
+      <li class="dropdown" ng-show="currentUser.role=='Role_User'">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">Job
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+       	   <li><a href="#!viewJob"> All  Job</a></li>
+        </ul>
+      
+  		<li class="dropdown" ng-show="currentUser.role=='Role_Admin'">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#!viewBlog">All  Blogs</a></li>
+       <li><a href="#!viewApprovedBlogs">
+      		 Approved Blogs</a>
+      	</li>
+        </ul>
+      </li>
+  
+      	<li class="dropdown" ng-show="currentUser.role=='Role_Admin'">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#!addJob"> Add  Job</a></li>
+       	   <li><a href="#!viewJob"> All  Job</a></li>
+        </ul>
+        
+      </li>
+     	<li><a href="#!AboutUs">About Us</a></li>
+      	<li><a href="#!ContactUs">Contact Us</a></li>
+      	</ul>
+    	
+    
+     <ul class="nav navbar-nav navbar-right" ng-show="currentUser==undefined">
+        <li><p class="navbar-text"><a href="#!login">Already have an account?</a></p></li>
+        <li>
+           <a href="#!signup" ><b>Sign Up</b></span></a>
+			<ul id="login-dp" >
+				<li>
+				</ul>
+		</li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
+     	<li style="color:white;padding-right:20px;font-size:20px"> Hello : {{currentUser.firstName}} </li>
+     	
+     	<li><a href="#!uploadprofilepic"><img src="http://localhost:2563/TokChatMiddleware/getimage/{{currentUser.email}}"  ng-show="currentUser.firstName!=undefined" 
+     			alt="Upload Profilepic"  height="70px" width="70px" class="img-circle" ></a></li>
+		<li>
+		
+		<li ng-show="currentUser.role=='Role_User'" class="dropdown" style="padding-right:20px;padding-left:10px ">
+						<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;padding-top:10px">Profile
+        				<span class="caret"></span></p>
+        				<ul class="dropdown-menu">
+          					<li><a href="#!viewProfile">View Profile</a></li>
+          					<li><a href="#!updateProfile">Update Profile</a></li>
+          					<li><a href="#!uploadprofilepic">Upload Profile Picture</a></li>
+         				</ul>
+         			</li>
+					<form ng-controller="userController">
+					<input type="submit" value="LogOut" ng-click="logout()">
+					</form>
+		</li>			
+	</ul>
+	
+    </div>
+	</nav>	
+	
+	
+	<!-- Content -->
+	<div ng-view></div>
+	
+	
+	
+	<!-- Footer -->
+	</body>
+</html>

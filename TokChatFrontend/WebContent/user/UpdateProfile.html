@@ -1,0 +1,36 @@
+<div class="container" ng-controller="userController" ng-init="fetchUser()">
+<div align="center">
+<font size="7"><i>Update User</i></font>
+</div>
+<form style="margin-left:20px">
+
+<div class="form-group">
+<h3>Enter Email:</h3> 
+<input type="email" ng-model="user.email" disabled class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter Password:</h3> 
+<input type="password" ng-model="user.password"  class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter First Name:</h3> 
+<input type="text" ng-model="user.firstName"  class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter Last Name:</h3> 
+<input type="text" ng-model="user.lastName"  class="form-control">
+</div>
+
+<div class="form-group">
+<h3>Enter Phone No:</h3> 
+<input type="text" ng-model="user.contactNumber"  class="form-control">
+</div>
+
+
+
+<input type="submit" class="btn btn-primary" ng-click="updateUser(user)" value="Edit Profile">
+</form>
+</div>

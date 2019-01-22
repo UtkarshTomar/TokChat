@@ -1,0 +1,34 @@
+<style>
+.t{
+padding-top:20px; 
+}
+
+</style>
+<div class="t" ng-controller="blogController" ng-init="fetchAllBlogs()">
+<div class="container-fluid"style="margin-left:300px"><br>
+	<div class="panel panel-info" style="width:1000px" ng-repeat="blog in allBlogs">
+		<div class="panel-heading">
+			<font size="7"><b><i>{{blog.blogName}}</i></b></font><br> <font size="4"><b>Posted
+				On : </b> {{blog.createDate | date:'medium'}}
+				<br/>
+				Status : {{blog.status}}
+				<br/>
+				<span ng-show="currentUser.role=='Role_Admin'">
+				Posted By : {{blog.email}}
+				</span>
+			
+		</div>
+		<div class="panel-body">
+			<h3><p>{{blog.blogContext}}</p></h3>
+			<br>
+			<h4 ng-show="currentUser.role=='Role_Admin' && blog.status=='pending'">
+				<span ng-click="approveBlog(blog.blogId)" class="btn btn-primary">Approve Blog</span>
+				<span ng-click="rejectBlog(blog.blogId)" class="btn btn-primary">Reject Blog</span>
+			</h4>
+		</div>
+	</div>
+	
+	
+	
+</div>
+</div>

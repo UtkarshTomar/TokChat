@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.backend.SecondProject.UserTestCase
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 7, Time elapsed: 1.516 s - in com.backend.SecondProject.UserTestCase

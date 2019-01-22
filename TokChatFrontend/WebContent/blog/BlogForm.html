@@ -1,0 +1,28 @@
+<div class="container" ng-controller="blogController">
+
+
+			<div class="row main">
+				<div class="main-login main-center">
+				<h1>Add Blog</h1>
+					
+						
+						<div class="form-group">
+							<label for="name">Blog Title</label>
+							<input type="text" class="form-control" name="BlogName" id="BlogName"  placeholder="Enter Blog Title" ng-model="blog.blogName"/>
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Blog Content</label>
+							<input type="text" class="form-control" name="BlogContext" id="BlogContext" placeholder="Enter Blog Context" ng-model="blog.blogContext"/>
+							
+						</div>
+
+						<div class="form-group ">
+						<input type="button" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Add Blog" ng-click="addBlog()"/>
+						</div>
+						
+					
+				</div>
+			</div>
+		</div>
+    

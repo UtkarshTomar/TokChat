@@ -1,0 +1,23 @@
+<div class="t" ng-controller="friendController" ng-init="pendingRequests()">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		<div align="center">
+			<font size="7"><i>Friend Requests</i></font>
+		</div></div>
+		<div class="panel-body">
+		<h2 ng-if="pendingRequests.length==0">No Pending Requests</h2>
+			<ul style="list-style: none">
+			<!-- pendingRequests - List<Friend>  -->
+				<li ng-repeat="request in pendingRequests">
+				<b><h2>Email </b>: {{request.fromId.email}}</h2>
+				<b><h2>Name :</b> {{request.fromId.firstName}}&nbsp;{{request.fromId.lastName}}</h2>
+				<b><h2>Phone number :</b> {{request.fromId.contactNumber}}</h2>
+				<img src="http://localhost:2563/TokChatMiddleware/getimage/{{request.fromId.email}}" alt="No Image" height="150px" width="150px" style="margin-top:10px">
+				<button type="button" class="btn btn-primary" style="width:90px; height:45px" ng-click="acceptRequest(request)" ><font size="4">Accept</font></button>
+				<button type="button" class="btn btn-warning" style="width:90px; height:45px" ng-click="deleteRequest(request)"><font size="4">Delete</font></button><br><br>
+				</li><br>
+			</ul><br>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="container" ng-controller="userController">	
+	<h1 style="text-decoration:underline;">Profile Page</h1>
+	<br/>
+					
+	<br/><br/>				
+   	<table class="table table-responsive" style="margin-bottom:50px;align:center;border:1px solid black">
+    <tbody>
+      <tr>
+      	<td colspan="2">
+      		<center><img id="img1"  
+					src="http://localhost:2563/TokChatMiddleware/getimage/{{currentUser.email}}"
+					style="height:120px;width:150px;border-radius: 25px;"></center>
+	
+      	</td>
+      </tr>
+      <tr>
+        <td>First Name : </td>
+        <td>{{currentUser.firstName}}</td>
+      </tr>
+        <tr>
+        <td>Last Name : </td>
+        <td>{{currentUser.lastName}}</td>
+      </tr>
+        <tr>
+        <td>Mobile Number : </td>
+        <td>{{currentUser.contactNumber}}</td>
+      </tr>
+        <tr>
+        <td>Email : </td>
+        <td>{{currentUser.email}}</td>
+      </tr>
+        
+        
+    </tbody>
+    </table> 
+</div>
+	
+	
+</div>

@@ -1,0 +1,17 @@
+<style>
+.t{
+padding-top:20px; 
+}
+
+</style>
+<div class="t" ng-controller="blogController">
+<div class="container-fluid"style="margin-left:300px"><br>
+	<ul>
+		<li ng-repeat="comment in comments">
+		{{comment.commentText}}&nbsp;&nbsp;&nbsp;
+		<b>Commented by: </b>{{comment.email}}&nbsp;
+		<b>Commented on: </b> {{comment.commentDate | date:'medium'}}
+		</li>
+		</ul>
+</div>
+</div>

@@ -1,0 +1,43 @@
+<style>
+.t{
+padding-top:20px; 
+}
+
+</style>
+<div class="t" ng-controller="blogController" ng-init="fetchAllApprovedBlogs()">
+<div class="container-fluid"style="margin-left:300px"><br>
+	<div class="panel panel-info" style="width:1000px" ng-repeat="blog in allBlogs">
+		<div class="panel-heading">
+			<font size="7"><b><i>{{blog.blogName}}</i></b></font><br> <font size="4"><b>Posted
+				On : </b> {{blog.createDate | date:'medium'}}
+				<br/>
+				<span>
+				Posted By : {{blog.email}}
+				</span>
+			
+		</div>
+		<div class="panel-body">
+			<h3><p>{{blog.blogContext}}</p></h3>
+			<br>
+			<a ng-click="incrementLikes(blog.blogId)"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+			{{blog.likes}} likes
+			<br/>
+		
+		<textarea rows="3" cols="50" ng-model="commentTxt" ></textarea>
+		<button type="button" class="btn btn-primary" ng-click="addComment(blog,commentTxt)">Post Comment</button><br>
+		
+		<a ng-click="onShowComments()">{{comments.length}} comments</a><br>
+		<ul style="list-style:none" ng-show="showComments" >
+		<li ng-repeat="comment in comments | orderBy:'-commentedOn'">
+		{{comment.commentTxt}}&nbsp;<b>Commented by: </b>{{comment.commentedBy.firstname}}&nbsp;<b>Commented on: </b> {{comment.commentedOn | date:'medium'}}
+		</li>
+		</ul>
+		</div>
+			
+	</div>
+	
+	
+	
+	
+</div>
+</div>

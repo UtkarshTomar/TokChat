@@ -1,0 +1,22 @@
+<style>
+.t{
+padding-top:20px; 
+}
+
+</style>
+<div class="t" ng-controller="JobController" ng-init="fetchAllJobs()">
+<div class="container-fluid"style="margin-left:300px"><br>
+	<div class="panel panel-info" style="width:1000px" ng-repeat="job in allJobs">
+		<div class="panel-heading">
+			<font size="6"><b><i>{{job.jobDesignation}}</i></b></font>
+			<br> <font size="4"><b>Last Date To Apply : </b> {{job.lastDateApply | date:'medium'}}
+		</font></div>
+		
+		<h4 ng-show="currentUser.role=='Role_User' ">
+				<span ng-click="applyJob(job.jobId)" class="btn btn-primary">Apply Job</span>
+		
+			</h4>
+		</div>
+		
+	</div>
+</div>	
